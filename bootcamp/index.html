@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Furin Fitness Bootcamp — Book Your Free Consultation</title>
+<style>
+  :root {
+    --dark: #000000; --dark2: #0a0a0a; --dark3: #111111;
+    --text: #e0e0e0; --muted: #888; --white: #ffffff; --accent: #22c55e; --accent-dark: #16a34a;
+    --font: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--text); font-family: var(--font); line-height: 1.6; overflow-x: hidden; }
+  nav { display: flex; align-items: center; justify-content: center; padding: 14px 40px; background: var(--dark2); border-bottom: 1px solid #222; }
+  .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px; color: var(--white); text-transform: uppercase; }
+  .logo span { color: var(--accent); }
+  .hero { position: relative; padding: 90px 24px 70px; text-align: center; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(34,197,94,0.08) 0%, transparent 70%); pointer-events: none; }
+  .badge { position: relative; z-index:1; display: inline-flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 16px; border-radius: 100px; margin-bottom: 28px; }
+  .badge::before { content: '●'; font-size: 0.5rem; }
+  h1 { position: relative; z-index:1; font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 900; line-height: 1.06; letter-spacing: -2px; color: var(--white); margin-bottom: 22px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { position: relative; z-index:1; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted); max-width: 620px; margin: 0 auto 40px; line-height: 1.7; }
+  .hero-sub strong { color: var(--text); }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #000; font-size: 1rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 17px 34px; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.15s; white-space: nowrap; text-decoration: none; }
+  .btn-primary:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
+  .trust-note { position: relative; z-index:1; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.5px; margin-top: 16px; }
+  .trust-note span { color: var(--accent); }
+
+  .stats-bar { border-top: 1px solid #222; border-bottom: 1px solid #222; background: var(--dark2); padding: 28px 40px; }
+  .stats-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 1.9rem; font-weight: 900; letter-spacing: -1px; color: var(--white); }
+  .stat-lbl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+  .section { padding: 90px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px; text-align:center; }
+  .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; text-align:center; }
+  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin: 0 auto 56px; line-height: 1.7; text-align:center; }
+
+  .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .inc-card { background: var(--dark2); border: 1px solid #222; border-radius: 12px; padding: 30px 26px; }
+  .inc-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(34,197,94,0.1); display:flex; align-items:center; justify-content:center; margin-bottom: 14px; font-size: 1.2rem; }
+  .inc-card h3 { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .inc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  .who-section { background: var(--dark2); }
+  .who-inner { max-width: 900px; margin: 0 auto; }
+  .checklist { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text); }
+  .check-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(34,197,94,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 900; margin-top: 1px; }
+
+  .testimonial-block { background: var(--dark3); border: 1px solid #222; border-left: 3px solid var(--accent); border-radius: 10px; padding: 32px; max-width: 680px; margin: 0 auto; }
+  .testimonial-block p { font-size: 1.05rem; color: var(--white); line-height: 1.65; margin-bottom: 18px; font-weight: 500; }
+  .testimonial-author { font-size: 0.85rem; color: var(--muted); }
+
+  .cta-final { background: linear-gradient(135deg, #0a0a0a 0%, #0f1f14 50%, #0a0a0a 100%); border-top: 1px solid #1e1e1e; text-align: center; }
+  .cta-final .section-title { margin-bottom: 16px; }
+
+  footer { border-top: 1px solid #1e1e1e; padding: 30px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+
+  @media (max-width: 768px) {
+    .checklist { grid-template-columns: 1fr; }
+    .section { padding: 60px 20px; }
+  }
+</style>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "15min", {origin:"https://app.cal.com"});
+  Cal.config = Cal.config || {};
+  Cal.config.forwardQueryParams = true;
+  Cal.ns["15min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Furin&nbsp;<span>Fitness</span>&nbsp;Bootcamp</div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🔥 Limited Spots — New Group Starting Soon</div>
+  <h1>Stop Starting Over.<br><em>Finish the Bootcamp.</em></h1>
+  <p class="hero-sub">A structured, high-accountability group program built to get you real results — training, nutrition, and check-ins, all in one program with a clear finish line.</p>
+  <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book a Free Consultation →</a>
+  <p class="trust-note"><span>✓</span> 100% Free consultation &nbsp;&nbsp;<span>✓</span> No pressure &nbsp;&nbsp;<span>✓</span> 15 minutes</p>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">130<span style="font-size:1.1rem">lbs</span></div><div class="stat-lbl">Coach's Own Result</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Certifications</div></div>
+    <div class="stat"><div class="stat-num">10<span style="font-size:1.1rem">+</span></div><div class="stat-lbl">Years Coaching</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Everything You Need. Nothing You Don't.</h2>
+    <p class="section-sub">The bootcamp is built to remove every excuse — the plan, the accountability, and the coaching are already handled.</p>
+    <div class="included-grid">
+      <div class="inc-card">
+        <div class="inc-icon">🏋️</div>
+        <h3>Structured Weekly Training</h3>
+        <p>A clear, progressive training plan for the full length of the program — no guessing what to do next.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🥗</div>
+        <h3>Nutrition Guidance</h3>
+        <p>Built around how you actually eat and live, not a generic meal plan you'll abandon in week two.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">📋</div>
+        <h3>Weekly Check-ins</h3>
+        <p>Regular accountability check-ins to review progress, fix what's not working, and keep momentum.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">👥</div>
+        <h3>Group Accountability</h3>
+        <p>You're not doing this alone — training alongside others who are just as committed.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">💬</div>
+        <h3>Direct Access to Your Coach</h3>
+        <p>Questions come up. You get real answers from me, not a generic support inbox.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🎯</div>
+        <h3>A Real Finish Line</h3>
+        <p>A fixed-length program with a clear end point and a plan for what comes after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section who-section">
+  <div class="section-inner who-inner">
+    <div class="section-label">Who This Is For</div>
+    <h2 class="section-title">Built for People Ready to Commit.</h2>
+    <ul class="checklist">
+      <li><div class="check-icon">✓</div> You've tried programs before and they didn't stick</li>
+      <li><div class="check-icon">✓</div> You want structure, not another vague plan</li>
+      <li><div class="check-icon">✓</div> You do better with accountability and a group</li>
+      <li><div class="check-icon">✓</div> You're ready to commit to a fixed-length program</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label">What Clients Say</div>
+    <h2 class="section-title">Real People. Real Wins.</h2>
+    <div class="testimonial-block">
+      <p>"I wasted two years bouncing between YouTube workouts and fad diets. This bootcamp gave me more clarity in a month than all of that combined."</p>
+      <div class="testimonial-author">— Marcus R., Bootcamp Graduate</div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-final">
+  <div class="section-inner">
+    <h2 class="section-title">Your Move.</h2>
+    <p class="section-sub">Book a free 15-minute consultation — no pressure, no pitch. Just a real conversation about whether the bootcamp is right for you.</p>
+    <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book Your Free Consultation →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Furin Fitness Bootcamp</p>
+</footer>
+
+</body>
+</html>

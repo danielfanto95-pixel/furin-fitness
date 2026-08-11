@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Furin Fitness — Personalized 1-on-1 Coaching</title>
+<style>
+  :root {
+    --dark: #000000; --dark2: #0a0a0a; --dark3: #111111;
+    --text: #e0e0e0; --muted: #888; --white: #ffffff; --accent: #22c55e; --accent-dark: #16a34a;
+    --font: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--text); font-family: var(--font); line-height: 1.6; overflow-x: hidden; }
+  nav { display: flex; align-items: center; justify-content: center; padding: 14px 40px; background: var(--dark2); border-bottom: 1px solid #222; }
+  .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px; color: var(--white); text-transform: uppercase; }
+  .logo span { color: var(--accent); }
+  .hero { position: relative; padding: 90px 24px 70px; text-align: center; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(34,197,94,0.08) 0%, transparent 70%); pointer-events: none; }
+  .badge { position: relative; z-index:1; display: inline-flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 16px; border-radius: 100px; margin-bottom: 28px; }
+  .badge::before { content: '●'; font-size: 0.5rem; }
+  h1 { position: relative; z-index:1; font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 900; line-height: 1.06; letter-spacing: -2px; color: var(--white); margin-bottom: 22px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { position: relative; z-index:1; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted); max-width: 620px; margin: 0 auto 40px; line-height: 1.7; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #000; font-size: 1rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 17px 34px; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.15s; white-space: nowrap; text-decoration: none; }
+  .btn-primary:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
+  .trust-note { position: relative; z-index:1; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.5px; margin-top: 16px; }
+  .trust-note span { color: var(--accent); }
+
+  .section { padding: 90px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px; text-align:center; }
+  .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; text-align:center; }
+  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin: 0 auto 56px; line-height: 1.7; text-align:center; }
+
+  .why-1on1 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; background: var(--dark2); border-top:1px solid #1e1e1e; border-bottom:1px solid #1e1e1e; }
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+  .why-list li { display: flex; gap: 14px; align-items: flex-start; }
+  .why-num { width: 36px; height: 36px; border-radius: 8px; background: rgba(34,197,94,0.1); color: var(--accent); font-weight: 900; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size: 0.9rem; }
+  .why-list h4 { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+  .why-list p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .why-visual { background: var(--dark3); border: 1px solid #222; border-radius: 16px; padding: 40px; text-align: center; }
+  .why-visual .big-num { font-size: 3.4rem; font-weight: 900; color: var(--accent); letter-spacing: -2px; }
+  .why-visual .big-lbl { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; }
+
+  .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .inc-card { background: var(--dark2); border: 1px solid #222; border-radius: 12px; padding: 30px 26px; }
+  .inc-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(34,197,94,0.1); display:flex; align-items:center; justify-content:center; margin-bottom: 14px; font-size: 1.2rem; }
+  .inc-card h3 { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .inc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  .cta-final { background: linear-gradient(135deg, #0a0a0a 0%, #0f1f14 50%, #0a0a0a 100%); border-top: 1px solid #1e1e1e; text-align: center; }
+
+  footer { border-top: 1px solid #1e1e1e; padding: 30px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+
+  @media (max-width: 768px) {
+    .why-1on1 { grid-template-columns: 1fr; }
+    .section { padding: 60px 20px; }
+  }
+</style>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "15min", {origin:"https://app.cal.com"});
+  Cal.config = Cal.config || {};
+  Cal.config.forwardQueryParams = true;
+  Cal.ns["15min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Furin&nbsp;<span>Fitness</span>&nbsp;Coaching</div>
+</nav>
+
+<section class="hero">
+  <div class="badge">🎯 1-on-1 · Fully Personalized</div>
+  <h1>Your Goals.<br><em>Your Plan. My Full Attention.</em></h1>
+  <p class="hero-sub">No templates, no group pacing — fully custom training and nutrition programming built entirely around your life, with direct access to me as your coach.</p>
+  <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book a Free Consultation →</a>
+  <p class="trust-note"><span>✓</span> 100% Free consultation &nbsp;&nbsp;<span>✓</span> No obligation &nbsp;&nbsp;<span>✓</span> 15 minutes</p>
+</section>
+
+<section class="section why-1on1">
+  <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <div class="section-label" style="text-align:left;">Why 1-on-1</div>
+      <h2 class="section-title" style="text-align:left;">Group Programs Are Good.<br>This Is Built Only for You.</h2>
+      <ul class="why-list">
+        <li><div class="why-num">01</div><div><h4>Fully Custom Programming</h4><p>Training and nutrition built from scratch around your body, schedule, and history — not adapted from a template.</p></div></li>
+        <li><div class="why-num">02</div><div><h4>Direct Access Between Sessions</h4><p>Questions don't wait for the next check-in. You message me directly.</p></div></li>
+        <li><div class="why-num">03</div><div><h4>Real-Time Adjustments</h4><p>Your plan changes as you do — no rigid program you're forced to fit yourself into.</p></div></li>
+      </ul>
+    </div>
+    <div class="why-visual">
+      <div class="big-num">1:1</div>
+      <div class="big-lbl">Coach-to-Client Ratio</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Everything Built Around You.</h2>
+    <div class="included-grid">
+      <div class="inc-card">
+        <div class="inc-icon">📐</div>
+        <h3>Custom Training Plan</h3>
+        <p>Programming designed specifically for your goals, equipment, and schedule — not pulled from a template library.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🥗</div>
+        <h3>Custom Nutrition Plan</h3>
+        <p>Built around how you actually eat, not a generic macro split you'll abandon in two weeks.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">💬</div>
+        <h3>Direct Messaging Access</h3>
+        <p>Real questions get real answers, whenever they come up — not just at the next scheduled call.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">📊</div>
+        <h3>Regular Progress Reviews</h3>
+        <p>Structured 1-on-1 check-ins to review what's working and adjust what isn't.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🔄</div>
+        <h3>Living, Adaptive Plan</h3>
+        <p>Your program evolves as your body and life change — never a fixed plan you have to force-fit.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🧠</div>
+        <h3>A Coach Who's Lived It</h3>
+        <p>Lost 130 lbs myself — I know exactly what it takes to actually change your life, not just your workout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-final">
+  <div class="section-inner">
+    <h2 class="section-title">Let's Talk About Your Goals.</h2>
+    <p class="section-sub">Book a free 15-minute consultation — no pressure, no pitch. Just a real conversation about what fully personalized coaching would look like for you.</p>
+    <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book Your Free Consultation →</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Furin Fitness Coaching</p>
+</footer>
+
+</body>
+</html>
