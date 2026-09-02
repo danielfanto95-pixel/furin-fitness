@@ -58,7 +58,23 @@
 
   footer { border-top: 1px solid #1e1e1e; padding: 30px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
 
-  @media (max-width: 768px) { .section { padding: 60px 20px; } .price-card { padding: 32px 24px; } }
+  .transform-section { background: var(--dark2); border-top:1px solid #1e1e1e; border-bottom:1px solid #1e1e1e; }
+  .transform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .transform-photo { border-radius: 14px; overflow: hidden; border: 1px solid #222; }
+  .transform-photo img { display: block; width: 100%; height: auto; }
+  .transform-copy .section-label, .transform-copy .section-title { text-align: left; }
+  .transform-copy .section-title { margin-bottom: 18px; }
+  .transform-copy p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 16px; }
+  .transform-copy strong { color: var(--white); }
+
+  .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .testimonial-card { background: var(--dark2); border: 1px solid #222; border-radius: 12px; padding: 32px 28px; }
+  .testimonial-quote-mark { font-family: Georgia, serif; font-size: 3rem; line-height: 1; color: var(--accent); opacity: 0.5; margin-bottom: 8px; }
+  .testimonial-card p { font-size: 0.98rem; color: var(--text); line-height: 1.65; margin-bottom: 18px; font-style: italic; }
+  .testimonial-name { font-weight: 800; color: var(--white); font-size: 0.9rem; }
+  .testimonial-result { font-size: 0.8rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  @media (max-width: 768px) { .section { padding: 60px 20px; } .price-card { padding: 32px 24px; } .transform-grid { grid-template-columns: 1fr; gap: 28px; } .transform-copy .section-label, .transform-copy .section-title { text-align: center; } }
 </style>
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
@@ -121,6 +137,50 @@
         <div class="inc-icon">🎯</div>
         <h3>A Real Finish Line</h3>
         <p>A fixed-length program with a clear end point and a plan for what comes after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section transform-section">
+  <div class="section-inner">
+    <div class="transform-grid">
+      <div class="transform-photo">
+        <img src="../assets/transformation.jpg" alt="Before and after transformation — real client result">
+      </div>
+      <div class="transform-copy">
+        <div class="section-label">Real Results</div>
+        <h2 class="section-title">This Isn't a Stock Photo.</h2>
+        <p>This is what a fixed-length program with real coaching, real accountability, and a real finish line actually produces — not overnight, not perfect, but real.</p>
+        <p>The bootcamp is built to get you the same kind of result: <strong>a structured plan, weekly check-ins, and a coach who actually notices when you go quiet.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">What Clients Say</div>
+    <h2 class="section-title">Real Clients. Real Results.</h2>
+    <p class="section-sub">These aren't cherry-picked stock testimonials — this is what past clients have actually said after finishing.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p>I got down to 10-12% body fat with Daniel after 10+ years of being out of shape.</p>
+        <div class="testimonial-name">Adam</div>
+        <div class="testimonial-result">10-12% Body Fat · 10+ Years Out of Shape</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p>I lost 40 lbs with Daniel and was able to keep it off.</p>
+        <div class="testimonial-name">Eusibius</div>
+        <div class="testimonial-result">40 lbs Lost &amp; Kept Off</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote-mark">"</div>
+        <p>I lost 50+ lbs with Daniel and have enjoyed his attention to detail and kind coaching.</p>
+        <div class="testimonial-name">Tonya</div>
+        <div class="testimonial-result">50+ lbs Lost</div>
       </div>
     </div>
   </div>
