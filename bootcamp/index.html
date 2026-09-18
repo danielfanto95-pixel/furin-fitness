@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Furin Fitness Bootcamp — Book Your Free Consultation</title>
+<title>Furin Fitness Bootcamp — Free Fitness Game Plan Session</title>
+<meta name="description" content="Overcome your fear of fitness and finally get in shape in less than 30 minutes a day. Book your free 15-minute Fitness Game Plan session.">
 <style>
   :root {
     --dark: #000000; --dark2: #0a0a0a; --dark3: #111111;
@@ -17,54 +18,121 @@
   nav { display: flex; align-items: center; justify-content: center; padding: 14px 40px; background: var(--dark2); border-bottom: 1px solid #222; }
   .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px; color: var(--white); text-transform: uppercase; }
   .logo span { color: var(--accent); }
+
   .hero { position: relative; padding: 90px 24px 70px; text-align: center; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(34,197,94,0.08) 0%, transparent 70%); pointer-events: none; }
   .badge { position: relative; z-index:1; display: inline-flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--accent); font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 7px 16px; border-radius: 100px; margin-bottom: 28px; }
   .badge::before { content: '●'; font-size: 0.5rem; }
-  h1 { position: relative; z-index:1; font-size: clamp(2.4rem, 6vw, 4.4rem); font-weight: 900; line-height: 1.06; letter-spacing: -2px; color: var(--white); margin-bottom: 22px; }
+  h1 { position: relative; z-index:1; font-size: clamp(2.1rem, 5.4vw, 3.8rem); font-weight: 900; line-height: 1.12; letter-spacing: -1.5px; color: var(--white); margin-bottom: 22px; max-width: 900px; margin-left:auto; margin-right:auto; }
   h1 em { font-style: normal; color: var(--accent); }
-  .hero-sub { position: relative; z-index:1; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted); max-width: 620px; margin: 0 auto 40px; line-height: 1.7; }
+  .hero-sub { position: relative; z-index:1; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--muted); max-width: 640px; margin: 0 auto 14px; line-height: 1.7; }
   .hero-sub strong { color: var(--text); }
+  .hero-lede { position: relative; z-index:1; font-size: 1.05rem; color: var(--text); max-width: 640px; margin: 0 auto 36px; line-height: 1.7; }
   .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #000; font-size: 1rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; padding: 17px 34px; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.2s, transform 0.15s; white-space: nowrap; text-decoration: none; }
   .btn-primary:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
+  .btn-primary.small { padding: 13px 26px; font-size: 0.88rem; }
   .trust-note { position: relative; z-index:1; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.5px; margin-top: 16px; }
   .trust-note span { color: var(--accent); }
-
-  .stats-bar { border-top: 1px solid #222; border-bottom: 1px solid #222; background: var(--dark2); padding: 28px 40px; }
-  .stats-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
-  .stat { text-align: center; }
-  .stat-num { font-size: 1.9rem; font-weight: 900; letter-spacing: -1px; color: var(--white); }
-  .stat-lbl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+  .checklist-inline { position: relative; z-index:1; list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap: 8px 22px; margin: 30px auto 0; max-width: 620px; font-size: 0.92rem; color: var(--text); }
+  .checklist-inline li { display:flex; align-items:center; gap:7px; }
+  .checklist-inline li::before { content:'✓'; color: var(--accent); font-weight:900; }
 
   .section { padding: 90px 24px; }
   .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-narrow { max-width: 760px; margin: 0 auto; }
   .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 12px; text-align:center; }
-  .section-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: var(--white); line-height: 1.1; letter-spacing: -1px; margin-bottom: 16px; text-align:center; }
-  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 620px; margin: 0 auto 56px; line-height: 1.7; text-align:center; }
+  .section-title { font-size: clamp(1.7rem, 3.8vw, 2.7rem); font-weight: 900; color: var(--white); line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; text-align:center; }
+  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 640px; margin: 0 auto 50px; line-height: 1.7; text-align:center; }
+  .alt { background: var(--dark2); }
 
+  /* Story / transformation */
+  .story-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 54px; align-items: center; }
+  .story-copy p { font-size: 1rem; color: var(--text); margin-bottom: 16px; line-height: 1.75; }
+  .story-copy p.lead { font-size: 1.15rem; color: var(--white); font-weight: 600; }
+  .story-copy strong { color: var(--accent); }
+  .transform-wrap { text-align: center; }
+  .transform-wrap img { width: 100%; max-width: 420px; border-radius: 14px; border: 1px solid #222; display:block; margin: 0 auto; }
+  .transform-caption { margin-top: 16px; font-size: 1.1rem; font-weight: 800; color: var(--white); }
+  .transform-caption span { color: var(--accent); }
+  @media (max-width: 860px) { .story-grid { grid-template-columns: 1fr; } }
+
+  /* Problem list */
+  .q-list { list-style:none; display:grid; grid-template-columns: 1fr 1fr; gap: 12px 30px; max-width: 760px; margin: 0 auto 36px; }
+  .q-list li { font-size: 1rem; color: var(--text); padding-left: 20px; position:relative; }
+  .q-list li::before { content:'•'; color: var(--accent); position:absolute; left:0; }
+  @media (max-width: 700px) { .q-list { grid-template-columns: 1fr; } }
+  .center-text { text-align:center; max-width: 700px; margin: 0 auto; font-size: 1.05rem; color: var(--text); line-height: 1.75; }
+  .center-text strong { color: var(--white); }
+
+  /* Feature blocks */
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+  .feature-card { background: var(--dark2); border: 1px solid #222; border-radius: 12px; padding: 32px 28px; }
+  .feature-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+  .feature-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
+  .feature-card .tag { display:inline-block; font-size: 0.78rem; font-weight: 700; color: var(--accent); margin-top: 8px; }
+
+  /* Who / checklist double col */
+  .who-inner { max-width: 900px; margin: 0 auto; }
+  .checklist { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text); }
+  .check-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(34,197,94,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 900; margin-top: 1px; }
+  @media (max-width: 768px) { .checklist { grid-template-columns: 1fr; } }
+
+  /* Included grid */
   .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
   .inc-card { background: var(--dark2); border: 1px solid #222; border-radius: 12px; padding: 30px 26px; }
   .inc-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(34,197,94,0.1); display:flex; align-items:center; justify-content:center; margin-bottom: 14px; font-size: 1.2rem; }
   .inc-card h3 { font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 8px; }
   .inc-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
 
-  .who-section { background: var(--dark2); }
-  .who-inner { max-width: 900px; margin: 0 auto; }
-  .checklist { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
-  .checklist li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text); }
-  .check-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(34,197,94,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-weight: 900; margin-top: 1px; }
+  /* Life happens */
+  .life-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; max-width: 900px; margin: 0 auto; }
+  .life-card { background: var(--dark3); border: 1px solid #222; border-radius: 10px; padding: 20px; text-align:center; }
+  .life-card .q { font-size: 0.92rem; color: var(--muted); margin-bottom: 8px; }
+  .life-card .a { font-size: 1rem; font-weight: 800; color: var(--accent); }
 
-  .testimonial-block { background: var(--dark3); border: 1px solid #222; border-left: 3px solid var(--accent); border-radius: 10px; padding: 32px; max-width: 680px; margin: 0 auto; }
+  /* Testimonial */
+  .testimonial-block { background: var(--dark3); border: 1px solid #222; border-left: 3px solid var(--accent); border-radius: 10px; padding: 32px; max-width: 680px; margin: 0 auto 20px; }
   .testimonial-block p { font-size: 1.05rem; color: var(--white); line-height: 1.65; margin-bottom: 18px; font-weight: 500; }
   .testimonial-author { font-size: 0.85rem; color: var(--muted); }
+  .testimonial-note { text-align:center; font-size: 0.85rem; color: var(--muted); max-width: 500px; margin: 8px auto 0; }
+
+  /* Guarantee */
+  .guarantee-box { background: var(--dark2); border: 1px solid #223; border-radius: 14px; padding: 44px; max-width: 780px; margin: 0 auto; }
+  .guarantee-box h3 { font-size: 1.3rem; color: var(--white); font-weight: 800; margin-bottom: 18px; text-align:center; }
+  .guarantee-box p { font-size: 0.98rem; color: var(--text); line-height: 1.75; margin-bottom: 14px; }
+  .guarantee-box .terms-list { list-style:none; margin: 18px 0; }
+  .guarantee-box .terms-list li { padding-left: 22px; position:relative; margin-bottom: 8px; font-size: 0.95rem; color: var(--text); }
+  .guarantee-box .terms-list li::before { content:'✓'; color: var(--accent); font-weight:900; position:absolute; left:0; }
+  .guarantee-cta { text-align:center; margin-top: 22px; }
+  .guarantee-cta a { color: var(--accent); font-size: 0.85rem; text-decoration: underline; }
+
+  /* Game plan steps */
+  .steps-list { list-style:none; max-width: 640px; margin: 0 auto; }
+  .steps-list li { display:flex; gap: 14px; margin-bottom: 18px; font-size: 0.98rem; color: var(--text); align-items:flex-start; }
+  .steps-list li::before { content:'✓'; flex-shrink:0; width: 24px; height:24px; border-radius:50%; background: rgba(34,197,94,0.15); color: var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:900; margin-top:2px; }
+  .plan-flow { max-width: 620px; margin: 40px auto 0; }
+  .plan-flow .pf-item { background: var(--dark3); border: 1px solid #222; border-radius: 10px; padding: 18px 22px; margin-bottom: 6px; }
+  .plan-flow .pf-item b { color: var(--white); }
+  .plan-flow .pf-arrow { text-align:center; color: var(--accent); font-size: 1.1rem; margin: 2px 0; }
+
+  /* FAQ */
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid #222; padding: 20px 0; }
+  .faq-item summary { cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--white); list-style: none; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary::after { content:'+'; color: var(--accent); font-size: 1.3rem; font-weight:400; flex-shrink:0; }
+  .faq-item[open] summary::after { content:'−'; }
+  .faq-item p { font-size: 0.92rem; color: var(--muted); margin-top: 12px; line-height: 1.7; }
 
   .cta-final { background: linear-gradient(135deg, #0a0a0a 0%, #0f1f14 50%, #0a0a0a 100%); border-top: 1px solid #1e1e1e; text-align: center; }
   .cta-final .section-title { margin-bottom: 16px; }
+  .cta-final .btn-primary { margin-top: 6px; }
 
   footer { border-top: 1px solid #1e1e1e; padding: 30px 24px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: var(--muted); }
 
   @media (max-width: 768px) {
-    .checklist { grid-template-columns: 1fr; }
     .section { padding: 60px 20px; }
   }
 </style>
@@ -85,94 +153,309 @@
 
 <section class="hero">
   <div class="badge">🔥 Limited Spots — New Group Starting Soon</div>
-  <h1>Stop Starting Over.<br><em>Finish the Bootcamp.</em></h1>
-  <p class="hero-sub">A structured, high-accountability group program built to get you real results — training, nutrition, and check-ins, all in one program with a clear finish line.</p>
-  <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book a Free Consultation →</a>
-  <p class="trust-note"><span>✓</span> 100% Free consultation &nbsp;&nbsp;<span>✓</span> No pressure &nbsp;&nbsp;<span>✓</span> 15 minutes</p>
+  <h1>I Help People Overcome Their Fear of Fitness — and Finally Get &amp; Stay in Shape in <em>Less Than 30 Minutes a Day.</em></h1>
+  <p class="hero-sub">Get the body you want — without making fitness your whole life.</p>
+  <p class="hero-lede">Stop worrying about doing the wrong workouts, eating the wrong foods, or failing again. Get a simple plan built around <strong>you</strong>, personalized guidance, and a coach in your corner so you always know what to do next.<br><strong>No extreme diets. No endless workouts. No figuring everything out alone.</strong></p>
+  <ul class="checklist-inline">
+    <li>Less than 30 minutes a day</li>
+    <li>Personalized training &amp; nutrition</li>
+    <li>Weekly adjustments</li>
+    <li>Direct coaching &amp; guidance</li>
+    <li>Built for real life</li>
+  </ul>
+  <p class="hero-sub" style="margin-top:34px; font-weight:700; color:var(--text);">You bring the 30 minutes. We'll make sure they count.</p>
+  <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book My Fitness Game Plan Session →</a>
+  <p class="trust-note"><span>✓</span> 100% Free &nbsp;&nbsp;<span>✓</span> No pressure &nbsp;&nbsp;<span>✓</span> 15 minutes</p>
 </section>
 
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-num">130<span style="font-size:1.1rem">lbs</span></div><div class="stat-lbl">Coach's Own Result</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Certifications</div></div>
-    <div class="stat"><div class="stat-num">10<span style="font-size:1.1rem">+</span></div><div class="stat-lbl">Years Coaching</div></div>
-  </div>
-</div>
-
-<section class="section">
+<!-- STORY -->
+<section class="section alt">
   <div class="section-inner">
-    <div class="section-label">What's Included</div>
-    <h2 class="section-title">Everything You Need. Nothing You Don't.</h2>
-    <p class="section-sub">The bootcamp is built to remove every excuse — the plan, the accountability, and the coaching are already handled.</p>
-    <div class="included-grid">
-      <div class="inc-card">
-        <div class="inc-icon">🏋️</div>
-        <h3>Structured Weekly Training</h3>
-        <p>A clear, progressive training plan for the full length of the program — no guessing what to do next.</p>
+    <div class="section-label">I've Been There Too</div>
+    <h2 class="section-title">Hi, I'm Daniel.</h2>
+    <div class="story-grid">
+      <div class="story-copy">
+        <p class="lead">At my heaviest, I weighed around 260 pounds.</p>
+        <p>I know what it's like to look in the mirror and want something different. I know what it's like to wonder where to start. And I know what it's like to make fitness much more complicated than it needs to be.</p>
+        <p>So I changed. I lost the weight. I learned how to train. I learned nutrition. I built muscle. And over the years, fitness completely transformed my body.</p>
+        <p>But eventually, I experienced the other extreme of fitness too — more tracking, more cardio, more dieting, more worrying about the scale, more fear that doing less would somehow mean losing progress.</p>
+        <p>That taught me something important: <strong>fitness can improve your life, but it can also take over your life if you let it.</strong></p>
+        <p>Most people don't need the extreme version. You don't need to become a fitness expert. You don't need to spend hours working out. You don't need to obsess over every calorie. You need to know what to do, how much to do, whether it's working, and what to change when it isn't.</p>
+        <p>That realization is a huge part of why I built Furin Fitness — I want to help you get the body you want without having to learn everything the hard way.</p>
       </div>
-      <div class="inc-card">
-        <div class="inc-icon">🥗</div>
-        <h3>Nutrition Guidance</h3>
-        <p>Built around how you actually eat and live, not a generic meal plan you'll abandon in week two.</p>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">📋</div>
-        <h3>Weekly Check-ins</h3>
-        <p>Regular accountability check-ins to review progress, fix what's not working, and keep momentum.</p>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">👥</div>
-        <h3>Group Accountability</h3>
-        <p>You're not doing this alone — training alongside others who are just as committed.</p>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">💬</div>
-        <h3>Direct Access to Your Coach</h3>
-        <p>Questions come up. You get real answers from me, not a generic support inbox.</p>
-      </div>
-      <div class="inc-card">
-        <div class="inc-icon">🎯</div>
-        <h3>A Real Finish Line</h3>
-        <p>A fixed-length program with a clear end point and a plan for what comes after.</p>
+      <div class="transform-wrap">
+        <img src="/assets/images/daniel-transformation.png" alt="Daniel's before and after fitness transformation">
+        <div class="transform-caption">260 lbs → <span>130 lbs lost</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section who-section">
-  <div class="section-inner who-inner">
-    <div class="section-label">Who This Is For</div>
-    <h2 class="section-title">Built for People Ready to Commit.</h2>
-    <ul class="checklist">
-      <li><div class="check-icon">✓</div> You've tried programs before and they didn't stick</li>
-      <li><div class="check-icon">✓</div> You want structure, not another vague plan</li>
-      <li><div class="check-icon">✓</div> You do better with accountability and a group</li>
-      <li><div class="check-icon">✓</div> You're ready to commit to a fixed-length program</li>
+<!-- CLIENT RESULTS -->
+<section class="section">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label">But This Isn't Just My Story</div>
+    <h2 class="section-title">Here's One of Theirs.</h2>
+    <div class="testimonial-block">
+      <p>"I wasted two years bouncing between YouTube workouts and fad diets. This bootcamp gave me more clarity in a month than all of that combined."</p>
+      <div class="testimonial-author">— Marcus R., Bootcamp Graduate</div>
+    </div>
+    <p class="testimonial-note">More client wins, before/afters, and check-in screenshots are being added here as new bootcamp cycles graduate — book your session below and yours could be next.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Sound Familiar?</div>
+    <h2 class="section-title">Getting in Shape Shouldn't Feel Scary or Complicated.</h2>
+    <p class="section-sub">You want to lose fat, build muscle, and finally feel confident in your body. But actually getting there can feel overwhelming.</p>
+    <ul class="q-list">
+      <li>What should I eat?</li>
+      <li>What workouts should I do?</li>
+      <li>How much cardio do I need?</li>
+      <li>Am I doing enough — or too much?</li>
+      <li>Why isn't the scale moving?</li>
+      <li>What if I waste months doing the wrong thing?</li>
+      <li>What if I lose the weight and gain it back?</li>
+      <li>What if I fail again?</li>
     </ul>
+    <p class="center-text">When you don't know what actually matters, every decision feels important. So you research, watch videos, save workouts, try another diet, and second-guess yourself — until fitness starts feeling like another full-time job. <strong>It doesn't have to.</strong> Furin Fitness is designed to remove that uncertainty. Instead of trying to become your own trainer, nutritionist, and fitness expert, you get a simple plan and someone to help you execute and adjust it.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="section-inner" style="text-align:center;">
-    <div class="section-label">What Clients Say</div>
-    <h2 class="section-title">Real People. Real Wins.</h2>
-    <div class="testimonial-block">
-      <p>"I wasted two years bouncing between YouTube workouts and fad diets. This bootcamp gave me more clarity in a month than all of that combined."</p>
-      <div class="testimonial-author">— Marcus R., Bootcamp Graduate</div>
+    <div class="section-label">Less Fear. Less Confusion. Less Friction.</div>
+    <h2 class="section-title">You Don't Need More Motivation.</h2>
+    <p class="center-text">The workout shouldn't be complicated. Nutrition shouldn't control your life. The gym shouldn't intimidate you. And one bad day shouldn't make you feel like you've ruined everything. You don't need to know everything — <strong>you just need to know what to do next.</strong> That's what we simplify.</p>
+    <p style="text-align:center; font-size:1.3rem; font-weight:900; color:var(--white); margin-top:26px;">Train. Eat. Check In. Adjust. Repeat.</p>
+  </div>
+</section>
+
+<!-- HOW WE SIMPLIFY -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Here's How We Make Fitness Simple</div>
+    <h2 class="section-title">Four Pieces. That's It.</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>🏋️ Simple, Personalized Training</h3>
+        <p>Your workouts are designed around your goals, experience, equipment, and schedule. Open your plan, know exactly what to do, get it done, move on with your day.</p>
+        <span class="tag">Get in. Get it done. Get on with your life.</span>
+      </div>
+      <div class="feature-card">
+        <h3>🍽️ Nutrition That Fits Your Life</h3>
+        <p>No eating chicken and broccoli six times a day. No eliminating every food you enjoy. Simple nutrition targets built around your goals, preferences, and lifestyle.</p>
+        <span class="tag">The goal is progress you can maintain.</span>
+      </div>
+      <div class="feature-card">
+        <h3>📈 Weekly Progress &amp; Adjustments</h3>
+        <p>We look at what's actually happening — what's working, what isn't, what's getting in the way — then we adjust. You don't have to figure out "is this working" alone.</p>
+        <span class="tag">Less guessing. More doing.</span>
+      </div>
+      <div class="feature-card">
+        <h3>💬 A Coach in Your Corner</h3>
+        <p>Confused? Ask. Progress stalled? We adjust. Vacation coming up? We plan for it. Busy week? We adapt. Ate more than planned? We move forward.</p>
+        <span class="tag">Someone helping you figure out what's next.</span>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:44px;">
+      <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book My Fitness Game Plan Session →</a>
     </div>
   </div>
 </section>
 
+<!-- WHO -->
+<section class="section who-section">
+  <div class="section-inner who-inner">
+    <div class="section-label">Fitness Should Fit Your Life</div>
+    <h2 class="section-title">This Might Be For You If...</h2>
+    <ul class="checklist">
+      <li><div class="check-icon">✓</div> You want to lose fat and/or build muscle</li>
+      <li><div class="check-icon">✓</div> You want to finally feel confident in your body</li>
+      <li><div class="check-icon">✓</div> You don't know where to start</li>
+      <li><div class="check-icon">✓</div> You're worried about doing fitness wrong</li>
+      <li><div class="check-icon">✓</div> The gym feels intimidating</li>
+      <li><div class="check-icon">✓</div> You've started before but struggled to stay consistent</li>
+      <li><div class="check-icon">✓</div> You're afraid you'll put in the work and still not get results</li>
+      <li><div class="check-icon">✓</div> You're tired of starting over</li>
+      <li><div class="check-icon">✓</div> Diets or programs you've tried weren't sustainable</li>
+      <li><div class="check-icon">✓</div> You don't want to spend hours working out</li>
+      <li><div class="check-icon">✓</div> You're overwhelmed by conflicting fitness advice</li>
+      <li><div class="check-icon">✓</div> You want to get in shape without it becoming your whole life</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Here's Exactly What You Get.</h2>
+    <p class="section-sub">Everything you need. Nothing you don't. The plan, the accountability, and the coaching are already handled.</p>
+    <div class="included-grid">
+      <div class="inc-card">
+        <div class="inc-icon">🏋️</div>
+        <h3>Personalized Training</h3>
+        <p>Your workouts, exercises, sets, reps, progression, and schedule — built around you. No guessing what workout you should do today.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🥗</div>
+        <h3>Personalized Nutrition</h3>
+        <p>Simple calorie, macro, and nutrition guidance designed around your lifestyle. No wondering whether one meal destroyed your progress.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">📋</div>
+        <h3>Weekly Check-Ins</h3>
+        <p>We review your progress and determine what's working and what needs changing. No spending months wondering if your plan is working.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">💬</div>
+        <h3>Direct Coaching</h3>
+        <p>When you have a question, you have someone to ask. No Googling your way through every problem.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🔄</div>
+        <h3>Ongoing Adjustments</h3>
+        <p>Your plan evolves as your body, schedule, lifestyle, and goals change.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🎯</div>
+        <h3>Accountability</h3>
+        <p>Someone helps you catch problems before one bad day becomes one bad month.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">✈️</div>
+        <h3>Real-Life Planning</h3>
+        <p>Travel, restaurants, holidays, busy weeks, schedule changes, unexpected problems — we adapt.</p>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🧠</div>
+        <h3>Long-Term Education</h3>
+        <p>You'll learn why we're doing what we're doing. The goal isn't to keep you dependent on coaching forever — it's to make fitness simple enough that eventually you know exactly what to do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFE HAPPENS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">What Happens When Life Gets in the Way?</div>
+    <h2 class="section-title">We Adjust.</h2>
+    <div class="life-grid">
+      <div class="life-card"><div class="q">Vacation?</div><div class="a">We adjust.</div></div>
+      <div class="life-card"><div class="q">Busy work week?</div><div class="a">We adjust.</div></div>
+      <div class="life-card"><div class="q">Can't make it to the gym?</div><div class="a">We adjust.</div></div>
+      <div class="life-card"><div class="q">Weight suddenly stops moving?</div><div class="a">We investigate.</div></div>
+      <div class="life-card"><div class="q">Had a terrible weekend?</div><div class="a">We move forward.</div></div>
+      <div class="life-card"><div class="q">Missed a workout?</div><div class="a">Not the end.</div></div>
+      <div class="life-card"><div class="q">Unplanned meal?</div><div class="a">You haven't ruined anything.</div></div>
+    </div>
+    <p class="center-text" style="margin-top:32px;">Your fitness program has to work in the real world. The best program isn't necessarily the most extreme program — <strong>it's the one you can actually keep doing.</strong></p>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Follow the Plan. Give It a Real Shot.</div>
+    <h2 class="section-title">The Furin Fitness Guarantee</h2>
+    <div class="guarantee-box">
+      <p>There's another fear I want to remove: <em>"What if I spend the money and this doesn't work for me?"</em> I don't want fear of wasting your money to be the reason you never start — so I'm willing to put some of the risk on myself.</p>
+      <ul class="terms-list">
+        <li>Follow the agreed-upon training and nutrition plan</li>
+        <li>Complete your required check-ins</li>
+        <li>Communicate with me when you're struggling</li>
+        <li>Give me the opportunity to coach you and make adjustments</li>
+      </ul>
+      <p>If you've genuinely followed the program and I haven't delivered the coaching and support promised, you can request a refund according to the guarantee terms.</p>
+      <p style="text-align:center; font-weight:800; color:var(--white);">You communicate. I coach. We adjust.</p>
+      <div class="guarantee-cta"><a href="mailto:danielfanto95@gmail.com?subject=Bootcamp%20Guarantee%20Terms">Request full guarantee terms →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE SESSION -->
+<section class="section">
+  <div class="section-inner section-narrow" style="text-align:center;">
+    <div class="section-label">Still Nervous About Starting?</div>
+    <h2 class="section-title">Don't Buy Anything Yet.</h2>
+    <p class="section-sub">Let's figure out what your plan would actually look like first. Start with your free 15-minute Fitness Game Plan brainstorming session. This isn't a workout, it isn't a fitness test, and you don't need to know anything about fitness before we talk.</p>
+    <ul class="steps-list" style="text-align:left;">
+      <li>Where you are now</li>
+      <li>The body and results you actually want</li>
+      <li>What's stopped you in the past</li>
+      <li>What you've already tried</li>
+      <li>Your schedule and how much time you realistically have</li>
+      <li>What you're afraid you'll have to do to get in shape</li>
+      <li>What's confusing you about fitness</li>
+      <li>Your biggest barriers</li>
+      <li>How we can make fitness simpler for you</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GAME PLAN -->
+<section class="section alt">
+  <div class="section-inner section-narrow" style="text-align:center;">
+    <div class="section-label">Then I'll Build Your Customized Fitness Game Plan</div>
+    <h2 class="section-title">You Get the Game Plan Either Way.</h2>
+    <p class="section-sub">After our call, I'll take what we discussed and put together a personalized starting game plan based on your goals, lifestyle, schedule, experience, preferences, and biggest barriers.</p>
+    <div class="plan-flow">
+      <div class="pf-item"><b>Your Goal</b> — what we're actually trying to accomplish</div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-item"><b>Your Training Approach</b> — what your workouts could realistically look like</div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-item"><b>Your Nutrition Approach</b> — the nutrition basics I'd focus on first</div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-item"><b>Your Biggest Bottleneck</b> — what's most likely kept you from the result you want</div>
+      <div class="pf-arrow">↓</div>
+      <div class="pf-item"><b>Your Next Steps</b> — what I'd recommend focusing on first</div>
+    </div>
+    <p class="center-text" style="margin-top:34px;">If coaching looks like a good fit, I'll explain exactly how Furin Fitness can help you execute, track, troubleshoot, adjust, and stay consistent. If you decide coaching isn't right for you — <strong>you still get your customized game plan.</strong> No pressure, no obligation.</p>
+    <p style="text-align:center; font-weight:900; font-size:1.15rem; color:var(--white); margin-top:26px;">15 Minutes. Your Goals. Your Game Plan.</p>
+    <div style="text-align:center; margin-top:26px;">
+      <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book My Fitness Game Plan Session →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Frequently Asked Questions</div>
+    <h2 class="section-title">Still Have Questions?</h2>
+    <div class="faq-list">
+      <details class="faq-item"><summary>Do I need a gym?</summary><p>Not necessarily. Your training can be designed around the equipment and environment available to you.</p></details>
+      <details class="faq-item"><summary>Do I have to completely change my diet?</summary><p>No. The goal is to build your nutrition around your life instead of making your entire life revolve around your diet.</p></details>
+      <details class="faq-item"><summary>What if I've never worked out before?</summary><p>That's completely fine. You don't have to get in shape before getting help getting in shape — that's the whole point.</p></details>
+      <details class="faq-item"><summary>What if I'm really out of shape?</summary><p>We start from where you are — not where you think you should already be.</p></details>
+      <details class="faq-item"><summary>What if I'm intimidated by the gym?</summary><p>That's exactly the kind of fear we're trying to remove. You don't need to walk into a gym already knowing everything — that's the point of having guidance.</p></details>
+      <details class="faq-item"><summary>What if I've tried losing weight before?</summary><p>We'll look at what caused previous attempts to break down and build around those barriers instead of blindly starting another diet.</p></details>
+      <details class="faq-item"><summary>What if I'm afraid I'll fail again?</summary><p>You don't need a perfect record. You need a plan for what happens when things aren't perfect.</p></details>
+      <details class="faq-item"><summary>What if my schedule changes?</summary><p>We adjust your plan.</p></details>
+      <details class="faq-item"><summary>Is this really less than 30 minutes a day?</summary><p>Furin Fitness is designed around making your fitness commitment as simple and time-efficient as possible, with training generally targeted at less than 30 minutes per day. Your exact needs may vary depending on your individual goals and starting point.</p></details>
+      <details class="faq-item"><summary>Will I need coaching forever?</summary><p>That's not the goal. I want you to understand fitness well enough that eventually you can confidently manage it yourself.</p></details>
+      <details class="faq-item"><summary>What happens during the Fitness Game Plan Session?</summary><p>We'll spend about 15 minutes talking through your goals, previous attempts, lifestyle, schedule, barriers, fears, and concerns. Then I'll use that to create your customized starting game plan.</p></details>
+      <details class="faq-item"><summary>Do I have to sign up for coaching to get my game plan?</summary><p>No. If we decide coaching makes sense, I'll explain how Furin Fitness can help you execute it. But the brainstorming session and customized game plan come first.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
 <section class="section cta-final">
   <div class="section-inner">
-    <h2 class="section-title">Your Move.</h2>
-    <p class="section-sub">Book a free 15-minute consultation — no pressure, no pitch. Just a real conversation about whether the bootcamp is right for you.</p>
-    <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book Your Free Consultation →</a>
+    <h2 class="section-title">Stop Being Afraid You're Doing Fitness Wrong.</h2>
+    <p class="section-sub">You don't need another extreme challenge, another crash diet, or hours of cardio. You don't need to become a fitness expert. You need a simple plan you can actually follow — less than 30 minutes a day, personalized training &amp; nutrition, weekly adjustments, direct guidance, built for real life.</p>
+    <p style="font-weight:800; color:var(--text); margin-bottom:8px;">You bring the 30 minutes. We'll make sure they count.</p>
+    <a href="#" data-cal-namespace="15min" data-cal-link="daniel-fanto-hdgre5/15min" data-cal-config='{"layout":"month_view"}' class="btn-primary">Book My Fitness Game Plan Session →</a>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Furin Fitness Bootcamp</p>
+  <p>© 2026 Furin Fitness Bootcamp &nbsp;·&nbsp; <a href="mailto:danielfanto95@gmail.com">danielfanto95@gmail.com</a> &nbsp;·&nbsp; (805) 558-8320</p>
 </footer>
 
 </body>
